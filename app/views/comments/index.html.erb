@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="center">Comentarios</h1>
+  <div class="row">
+    <% @comments.each do |comment| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <b>
+              <%= comment.name %>
+            </b>
+            Hecho el día <%= comment.created_at.strftime('%d-%m-%Y') %>
+          </div>
+          <div class="panel-body">
+            <p class="beginning-content">
+              <%= comment.content %>
+            </p>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-md-2 pull-right">
+                <%= link_to 'Ver', comment, :class => 'show-comment' %>
+                <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro?' }, :class => 'delete-comment' %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-3 center">
+      <h3>Código para dejar comentarios:</h3>
+      <div class="thumbnail">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= @user_url %>" alt="Código QR" title=""/>
+      </div>
+      <%= link_to 'Imprimir', {controller: 'print', action: 'index'}, :class => 'btn btn-primary' %>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+</div>
+
+
+

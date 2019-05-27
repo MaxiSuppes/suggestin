@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h2>Tienes un nuevo comentario en Suggestin</h2>
+
+<% if @sender_name %>
+    <h4>Nombre del remitente: <%= @sender_name %></h4>
+<% end %>
+
+<% if @sender_email %>
+    <h4>Email del remitente: <%= @sender_email %></h4>
+<% end %>
+
+<h4>Mensaje:</h4>
+<p>
+  <%= @message %>
+</p>
+</body>
+</html>

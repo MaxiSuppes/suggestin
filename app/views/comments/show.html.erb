@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="center">Comentario</h1>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>
+          <b>
+            <%= @comment.name %>
+          </b>
+          Hecho el día <%= @comment.created_at.strftime('%d-%m-%Y') %>
+        </p>
+      </div>
+      <div class="panel-body">
+        <p>
+          <%= @comment.content %>
+        </p>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-2 pull-right">
+            <p>
+              <b>
+                <%= @comment.email %>
+              </b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

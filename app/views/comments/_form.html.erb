@@ -1,0 +1,37 @@
+<%= form_with(model: comment, local: true) do |f| %>
+    <% if comment.errors.any? %>
+        <div id='error_explanation'>
+          <h2><%= pluralize(comment.errors.count, 'error') %> prohibited this comment from being saved:</h2>
+
+          <ul>
+            <% comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class='field center'>
+      <%= f.label :content, 'Comentario' %>
+      <%= f.text_area :content %>
+    </div>
+
+    <div class='field center'>
+      <%= f.label :name, 'Tu nombre (opcional)' %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class='field center'>
+      <%= f.label :email, 'Tu mail (opcional)' %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class='field hidden'>
+      <%= f.label :user_id %>
+      <%= f.number_field :user_id %>
+    </div>
+
+    <div class='actions center'>
+      <%= f.submit 'Enviar', :class => 'btn btn-lg btn-default' %>
+    </div>
+<% end %>

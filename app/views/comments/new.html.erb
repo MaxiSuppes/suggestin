@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <h1 class="center form-header">Enviar queja o sugerencia a <b><%= @user.name %></b></h1>
+    <div>
+      <form class="form-horizontal" action="/comments" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="form-group">
+          <label for="comment_name" class="col-sm-3 control-label">Nombre (opcional)</label>
+          <div class="col-sm-9 col-lg-6">
+            <input type="text" name="comment[name]" id="comment_name" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comment_email" class="col-sm-3 control-label">Email (opcional)</label>
+          <div class="col-sm-9 col-lg-6">
+            <input type="email" name="comment[email]" id="comment_email" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comment_content" class="col-sm-3 control-label">Comentario</label>
+          <div class="col-sm-9 col-lg-6">
+            <textarea name="comment[content]" id="comment_content" class="form-control" rows="8"></textarea>
+          </div>
+        </div>
+        <div class="form-group hidden">
+          <label for="comment_user_id" class="col-sm-3 control-label">Comentario</label>
+          <div class="col-sm-9 col-lg-6">
+            <input type="number" name="comment[user_id]" value="<%= @user.id %>" id="comment_user_id" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-9">
+            <button type="submit" name="commit" class="btn btn-info pull-right">Enviar comentario</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

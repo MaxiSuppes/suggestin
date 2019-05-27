@@ -1,0 +1,29 @@
+<div class="container" id="printable">
+  <div class="row">
+    <div class="center">
+      <%= image_tag 'suggestin-header.jpg', class: 'image-header' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="center">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= @user_url %>" alt="Código QR" title="" class="qr-code"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="center friendly-url">
+      <span>O ingresá en suggestin.co/<%= @user.name.gsub(' ', '-') %></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="center">
+      <%= image_tag 'suggestin-footer.jpg', class: 'image-footer' %>
+    </div>
+  </div>
+</div>
+
+
+<%= javascript_tag do %>
+    $('.image-footer').load(function() {
+        print();
+    });
+<% end %>

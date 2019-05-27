@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suggestin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+</head>
+
+<body>
+<header class='navbar navbar-fixed-top navbar-inverse'>
+  <div class="container">
+    <div class='col-sm-4'>
+      <%= link_to 'SuggestIn', :root, id: 'logo' %>
+    </div>
+    <div class="col-sm-1 pull-right">
+      <% if user_signed_in? %>
+          <%= link_to('Salir', destroy_user_session_path, :method => :delete, class: 'logout') %>
+      <% end %>
+    </div>
+  </div>
+</header>
+
+<div class='container'>
+  <% flash.each do |type, message| %>
+      <div class="<%= alert_class(type) %>">
+        <%= message %>
+      </div>
+  <% end %>
+
+  <%= yield %>
+</div>
+<div id="footer">
+  <div class="container">
+    <p class="pull-left"><%= link_to 'Contacto', 'https://mail.google.com/mail/?view=cm&fs=1&to=contacto@suggestin.com', class: 'contact-text' %></p>
+  </div>
+</div>
+</body>
+</html>
