@@ -8,6 +8,6 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, allow_blank: true
 
   def add_hash_for_url
-    self.hash_for_url = Sysrandom.base64(8)
+    self.hash_for_url = Sysrandom.hex(32)
   end
 end
