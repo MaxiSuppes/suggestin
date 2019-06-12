@@ -7,13 +7,15 @@
           <b>
             <%= @comment.name %>
           </b>
-          Hecho el día <%= @comment.created_at.strftime('%d-%m-%Y') %>
+          Hecho el día <%= @comment.created_at.strftime('%d-%m-%Y %H:%Mhs') %>
         </p>
       </div>
       <div class="panel-body">
         <p>
           <%= @comment.content %>
         </p>
+        <p>Calificación: <%= @comment.rating %></p>
+        <p>Categoría: <%= @comment.category %></p>
       </div>
       <div class="panel-footer">
         <div class="row">
