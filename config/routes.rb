@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   get 'print', to: 'print#index'
   get ':shop_name' , to: 'comments#new_whit_shop_name'
-  #get 'main', to: 'main#main'
+  get 'show_comments', to: 'main#show_comments'
 end

@@ -1,14 +1,14 @@
-<div class="container">
-  <h1 class="center">Menu</h1>
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-3 center">
-      <h3>Menu principal:</h3>
-      <div class="thumbnail">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= @user_url %>" alt="Código QR" title=""/>
-      </div>
-      <%= link_to 'Imprimir', {controller: 'print', action: 'index'}, :class => 'btn btn-primary' %>
+<h2>Menú principal</h2>
+<div><%= link_to 'Ver comentarios', {controller: 'main', action: 'show_comments'}, :class => 'show-comments' %></div>
+<div><%= link_to 'Ver reportes', {controller: 'main', action: 'show_comments'}, :class => 'show-comments' %></div>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-3 center">
+    <h3>Código para dejar comentarios:</h3>
+    <div class="thumbnail">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= @user_url %>" alt="Código QR" title=""/>
     </div>
-    <div class="col-sm-5"></div>
+    <%= link_to 'Imprimir', {controller: 'print', action: 'index'}, :class => 'btn btn-primary' %>
   </div>
+  <div class="col-sm-5"></div>
 </div>
