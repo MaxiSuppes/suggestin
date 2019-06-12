@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="center">Menu</h1>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-3 center">
+      <h3>Menu principal:</h3>
+      <div class="thumbnail">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= @user_url %>" alt="Código QR" title=""/>
+      </div>
+      <%= link_to 'Imprimir', {controller: 'print', action: 'index'}, :class => 'btn btn-primary' %>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+</div>

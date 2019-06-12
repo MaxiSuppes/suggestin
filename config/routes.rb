@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'comments#index'
-
+  #root 'comments#index'
+  root 'main#index'
   devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations'
@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   get 'print', to: 'print#index'
   get ':shop_name' , to: 'comments#new_whit_shop_name'
+  #get 'main', to: 'main#main'
 end

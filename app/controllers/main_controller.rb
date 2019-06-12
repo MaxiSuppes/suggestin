@@ -1,4 +1,5 @@
-class PrintController < ApplicationController
+class MainController < ApplicationController
+  before_action :authenticate_user!,  :except => [:new, :create]
   # GET /print
   def index
     @user = current_user
