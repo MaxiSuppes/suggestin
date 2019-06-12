@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   end
 
   get 'print', to: 'print#index'
-  get ':shop_name' , to: 'comments#new_whit_shop_name'
+  #get ':shop_name' , to: 'comments#new_whit_shop_name'
   get 'reports', to: 'reports#index'
 end
