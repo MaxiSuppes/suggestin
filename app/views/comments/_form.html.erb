@@ -26,6 +26,16 @@
       <%= f.email_field :email %>
     </div>
 
+    <div class='field center'>
+      <%= f.label :category, 'Categoría' %>
+      <%= f.text_field :category %>
+    </div>
+
+    <div class='field center'>
+      <%= f.label :rating, 'Calificación' %>
+      <%= f.text_field :rating %>
+    </div>
+
     <div class='field hidden'>
       <%= f.label :user_id %>
       <%= f.number_field :user_id %>

@@ -1,2 +1,2 @@
-json.extract! comment, :id, :content, :name, :email, :user_id, :created_at, :updated_at
+json.extract! comment, :id, :content, :name, :email, :rating, :category, :user_id, :created_at, :updated_at
 json.url comment_url(comment, format: :json)
