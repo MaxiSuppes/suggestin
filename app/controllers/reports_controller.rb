@@ -12,6 +12,8 @@ class ReportsController < ApplicationController
     @seguridad = @comments.select {|comment| comment.category == "Seguridad"}
     @otras = @comments.select {|comment| comment.category == "Otras"}
 
+    @all_categories = [@limpieza.count, @atencionalcliente.count, @ubicacion.count, @seguridad.count, @otras.count]
+
     @dataatencionalcliente = [@atencionalcliente.select{|comment| comment.rating == 1}.count, @atencionalcliente.select{|comment| comment.rating == 2}.count,
                               @atencionalcliente.select{|comment| comment.rating == 3}.count, @atencionalcliente.select{|comment| comment.rating == 4}.count,
                               @atencionalcliente.select{|comment| comment.rating == 5}.count]
@@ -148,7 +150,7 @@ class ReportsController < ApplicationController
         :legend => ['1 estrella', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas'],
         :data => [@data_one, @data_two, @data_three, @data_four, @data_five],
         :axis_with_labels => [['x'], ['y']],
-        :axis_range => [nil, [0, @data_one.max]],
+        :axis_range => [nil, [0, @all_categories.max]],
         :min_value => 0,
         :bar_width_and_spacing => '25,60',
         :axis_labels => ['Limpieza|Atención al cliente|Ubicación|Seguridad|Otras'],
