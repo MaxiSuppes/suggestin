@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  before_action :authenticate_user!,  :except => [:new, :create]
+  before_action :authenticate_user!,  :except => [:show_comments]
   # GET /main
   def index
     @user = current_user
