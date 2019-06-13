@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!,  :except => [:new, :create, :comment_success, :new_whit_shop_name, :comment_error]
+  #before_action :authenticate_user!,  :except => [:new, :create, :comment_success, :new_whit_shop_name, :comment_error]
 
   # GET /comments
   def index
