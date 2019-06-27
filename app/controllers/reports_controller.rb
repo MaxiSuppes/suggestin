@@ -156,4 +156,9 @@ class ReportsController < ApplicationController
         :axis_labels => ['Limpieza|Atención al cliente|Ubicación|Seguridad|Otras'],
     )
   end
+
+  def filter
+    
+  end
+
 end
