@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get 'print', to: 'print#index'
   #get ':shop_name' , to: 'comments#new_whit_shop_name'
   get 'reports', to: 'reports#index'
-  get 'filter', to: 'reports#filter'
+  post 'reports/filter', to: 'reports#filter'
 end
