@@ -20,4 +20,8 @@
 
 .idea
 
+# Ignore environment variables.
 .env
+
+# Ignore images saved in Disk.
+/storage
