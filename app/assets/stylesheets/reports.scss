@@ -1,3 +1,27 @@
 // Place all the styles related to the Reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.report-select {
+  margin-right: 15px;
+}
+
+.reports {
+  display: block;
+}
+
+.filter-options {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.submit-btn {
+  padding-top: 0;
+  background-color: #337ab7;
+  height: 36px;
+}
+
+#category {
+  height: 50px;
+  width: 300px;
+}
