@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .report-select {
-  margin: 0 10px 20px 0;
+  margin-right: 15px;
 }
 
 .reports {
@@ -12,5 +12,15 @@
 
 .filter-options {
   display: flex;
-  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.submit-btn {
+  padding-top: 0;
+  background-color: #337ab7;
+  height: 36px;
+}
+
+#category {
+  height: 50px;
 }
