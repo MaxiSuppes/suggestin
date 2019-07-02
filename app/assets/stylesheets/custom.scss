@@ -181,3 +181,11 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
+.comment-image {
+  width: 700px;
+  height: 700px;
+  object-fit: cover;
+  transform: rotate(90deg);
+}
