@@ -15,6 +15,9 @@
             </p>
             <p>Calificación: <%= comment.rating %></p>
             <p>Categoría: <%= comment.category %></p>
+            <% if comment.image.attached? %>
+              <b>Se incluyó una imagen en el comentario</b>
+            <% end %>
           </div>
           <div class="panel-footer">
             <div class="row">
