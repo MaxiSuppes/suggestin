@@ -26,26 +26,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <%= form_for :category do |f1| %>
-
-    <div class="add-categories">
-
-      <div class="field">
-        <%= f1.label :name, 'Agregar categoría' %><br />
-        <%= f1.text_field :name, autocomplete: "off" %>
-      </div>
-
-      <div class="actions">
-        <%= f1.submit "Agregar" %>
-      </div>
-
-    </div>
-
-  <% end %>
-
   <div class="actions register">
     <%= f.submit "Registrarme" %>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

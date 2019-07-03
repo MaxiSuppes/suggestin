@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   get 'print', to: 'print#index'
   get 'reports', to: 'reports#index'
+  get 'categories/index', to: 'categories#index'
   post 'reports/filter', to: 'reports#filter'
 end

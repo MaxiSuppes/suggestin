@@ -1,0 +1,16 @@
+<%= form_for :category do |f| %>
+
+  <div class="add-categories">
+
+    <div class="field">
+      <%= f.label :name, 'Agregar categoría' %><br />
+      <%= f.text_field :name, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Agregar" %>
+    </div>
+
+  </div>
+
+<% end %>
