@@ -25,3 +25,7 @@
 
 # Ignore images saved in Disk.
 /storage
+
+.etc
+
+vendor/
