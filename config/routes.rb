@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   get 'reports', to: 'reports#index'
   get 'categories/index', to: 'categories#index'
   post 'reports/filter', to: 'reports#filter'
+  post 'categories/add', to: 'categories#add_category'
+
 end

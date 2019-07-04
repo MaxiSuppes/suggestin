@@ -1,16 +1,23 @@
-<%= form_for :category do |f| %>
+<%= form_tag "/categories/add" do %>
 
   <div class="add-categories">
 
     <div class="field">
-      <%= f.label :name, 'Agregar categoría' %><br />
-      <%= f.text_field :name, autocomplete: "off" %>
+      <b>Agregar categoría:</b>
+      <%= text_field_tag :name %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Agregar" %>
+    <div class="form-group">
+      <%=  submit_tag 'Agregar', :name => 'add', :class => 'add-btn btn btn-primary' %>
     </div>
 
+  </div>
+
+  <div class="actual-categories">
+    <%=@user.categories%>
+    <%@user.categories.each do |category|%>
+      <%=category%>
+    <%end %>
   </div>
 
 <% end %>
