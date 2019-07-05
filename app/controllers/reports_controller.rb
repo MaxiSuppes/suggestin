@@ -70,7 +70,7 @@ class ReportsController < ApplicationController
         :legend => legend,
         :data => data_category,
         :axis_with_labels => [['x'], ['y']],
-        :axis_range => [nil, [0, max_range]],
+        :axis_range => [nil, [0, max_range, 1]],
         :min_value => 0,
         :axis_labels => axis_labels,
         :bar_width_and_spacing => '25,60',
@@ -84,13 +84,13 @@ class ReportsController < ApplicationController
       @selected_category = params[:category]
       if params[:category] != "Todas"
         comments_category = get_comments_category(params[:category])
-        @data_category = build_data_category(comments_category)
+        data_category = build_data_category(comments_category)
       else
         is_all_categories = true
-        @data_category = build_all_categories
+        data_category = build_all_categories
       end
 
-      generate_graphics_category(@data_category, is_all_categories)
+      generate_graphics_category(data_category, is_all_categories)
     end
   end
 end
