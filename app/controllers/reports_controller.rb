@@ -33,7 +33,6 @@ class ReportsController < ApplicationController
     @ratings.each do |rating|
       data_all_categories.push(build_categories_by_rating(rating))
     end
-    puts data_all_categories
     data_all_categories
   end
 
@@ -47,11 +46,13 @@ class ReportsController < ApplicationController
 
 
   def generate_graphics_category(data_category, is_all_categories)
-    bar_colors = ['FFFF00']
+
+    bar_colors = ['00CCCC']
     legend = ['Cantidad de comentarios']
     title = params[:category]
     axis_labels = ['1|2|3|4|5']
     max_range = data_category.max
+
     if is_all_categories
       bar_colors = ['FFFF00', '0000FF', '00FF00', 'FF0000', '000000']
       legend = ['1 estrella', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas']
@@ -59,7 +60,6 @@ class ReportsController < ApplicationController
       axis_labels = ['Limpieza|Atención al cliente|Ubicación|Seguridad|Otras']
       max_range = calculate_range_max_category.max
     end
-
 
     @bar_chart_selected = Gchart.bar(
         :type => 'bar',
@@ -81,8 +81,9 @@ class ReportsController < ApplicationController
     if params[:filter]
       index
       is_all_categories = false
+      @selected_category = params[:category]
       if params[:category] != "Todas"
-        comments_category = get_comments_category( params[:category])
+        comments_category = get_comments_category(params[:category])
         @data_category = build_data_category(comments_category)
       else
         is_all_categories = true
