@@ -2,7 +2,7 @@
   <div class="row">
     <h1 class="center form-header">Enviar queja o sugerencia a <b><%= @user.name %></b></h1>
     <div>
-      <form class="form-horizontal" action="/comments" method="post">
+      <form class="form-horizontal" action="/comments" method="post" enctype="multipart/form-data">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
         <div class="form-group">
@@ -23,11 +23,9 @@
           <label for="comment_category" class="col-sm-3 control-label">Categoría</label>
           <div class="col-sm-9 col-lg-6">
             <select name="comment[category]" id="comment_category" class="form-control">
-              <option value="Limpieza">Limpieza</option>
-              <option value="Atención al cliente">Atención al cliente</option>
-              <option value="Ubicación">Ubicación</option>
-              <option value="Seguridad">Seguridad</option>
-              <option value="otras">Otras</option>
+              <%@user.categories.each do |categories|%>
+                <option value="<%=categories%>"><%=categories%></option>
+              <%end %>
             </select>
           </div>
         </div>
@@ -49,6 +47,14 @@
           <label for="comment_content" class="col-sm-3 control-label">Comentario</label>
           <div class="col-sm-9 col-lg-6">
             <textarea name="comment[content]" id="comment_content" class="form-control" rows="8"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comment_image" class="col-sm-3 control-label">Imagen (Opcional) </label>
+          <div class="col-sm-9 col-lg-6">
+            <input type="file" name="comment[image]" id="comment_image" class="form-control" accept="image/*"
+                   capture="camera"/>
           </div>
         </div>
 

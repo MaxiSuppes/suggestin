@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :comments
-  before_save :add_hash_for_url
+  before_create :add_hash_for_url
   validates :name, uniqueness: true, allow_blank: true
+  validates :categories, :length => { :minimum => 1 }
 
   def add_hash_for_url
     self.hash_for_url = Sysrandom.hex(32)
