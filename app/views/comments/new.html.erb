@@ -70,10 +70,11 @@
   </div>
 </div>
 <%= javascript_tag do %>
-  $(document).ready(function(){
-    $('.ui.rating').rating('setting', 'onRate', function(value) {
-        $('#comment_rating').val(value);
-        console.log("asdasdas", $('#comment_rating').val());
-    });
+  $(document).ready(function() {
+      var inputRatingSelector = $('#comment_rating');
+      inputRatingSelector.val(1);
+      $('.ui.rating').rating('setting', 'onRate', function(value) {
+          inputRatingSelector.val(value);
+      });
   });
 <% end %>
