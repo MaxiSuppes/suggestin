@@ -17,7 +17,7 @@
     <%@user.categories.each do |category|%>
       <div class="category">
         <%=category%>
-        <a class="close close-categories"></a>
+        <%= link_to '', {controller: 'categories', action: 'delete_category', :category_to_delete => category}, :class => 'close close-categories' %>
       </div>
     <%end %>
   </div>

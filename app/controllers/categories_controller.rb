@@ -11,4 +11,10 @@ class CategoriesController < ApplicationController
     @user.save
   end
 
+  def delete_category
+    @user = current_user
+    current_user.categories.delete(params[:category_to_delete])
+    @user.save
+  end
+
 end
