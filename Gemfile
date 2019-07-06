@@ -74,6 +74,5 @@ gem 'devise'
 
 gem 'googlecharts'
 
-group :production do
-  gem 'sendgrid-ruby'
-end
+# Email sender
+gem 'sendgrid-ruby'
