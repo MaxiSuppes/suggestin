@@ -54,7 +54,7 @@ class ReportsController < ApplicationController
     max_range = data_category.max
 
     if is_all_categories
-      bar_colors = ['FFFF00', '0000FF', '00FF00', 'FF0000', '000000']
+      bar_colors = ['CC0000', 'FF6600', 'FFCC00', '00FFFF', '00CC00']
       legend = ['1 estrella', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas']
       title = "Comentarios agrupados por categoría"
       axis_labels = [@categories]
