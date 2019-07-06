@@ -206,6 +206,7 @@ html {
 
 .btn.main-btn {
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .add-btn {
@@ -246,4 +247,15 @@ html {
   display: flex;
   background-color: lightblue;
   margin-bottom: 5px;
+}
+
+.main-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.option-menu {
+  width: 38%;
 }
