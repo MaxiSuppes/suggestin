@@ -15,7 +15,10 @@
 
   <div class="actual-categories">
     <%@user.categories.each do |category|%>
-      <%=category%>
+      <div class="category">
+        <%=category%>
+        <a class="close close-categories"></a>
+      </div>
     <%end %>
   </div>
 

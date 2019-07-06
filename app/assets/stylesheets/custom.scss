@@ -211,3 +211,39 @@ html {
 .add-btn {
   margin-left: 15px;
 }
+
+.actual-categories {
+  display: inline-block;
+}
+
+.close.close-categories {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  float: inherit;
+  color: blue;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 21px;
+  width: 2px;
+  background-color: blue;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.category {
+  display: flex;
+  background-color: lightblue;
+  margin-bottom: 5px;
+}

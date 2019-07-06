@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   post 'reports/filter', to: 'reports#filter'
   post 'categories/add', to: 'categories#add_category'
 
+
+  put 'enable_reports', to: 'enable_reports#updateReports'
+  put 'enable_benchmark', to: 'enable_reports#updateBenchmark'
 end
