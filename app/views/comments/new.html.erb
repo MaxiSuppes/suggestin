@@ -23,11 +23,9 @@
           <label for="comment_category" class="col-sm-3 control-label">Categoría</label>
           <div class="col-sm-9 col-lg-6">
             <select name="comment[category]" id="comment_category" class="form-control">
-              <option value="Limpieza">Limpieza</option>
-              <option value="Atención al cliente">Atención al cliente</option>
-              <option value="Ubicación">Ubicación</option>
-              <option value="Seguridad">Seguridad</option>
-              <option value="otras">Otras</option>
+              <%@user.categories.each do |categories|%>
+                <option value="<%=categories%>"><%=categories%></option>
+              <%end %>
             </select>
           </div>
         </div>

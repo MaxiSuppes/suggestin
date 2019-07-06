@@ -12,9 +12,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :categories do
+    collection do
+      get 'delete_category'
+    end
+  end
+
   get 'print', to: 'print#index'
-  #get ':shop_name' , to: 'comments#new_whit_shop_name'
   get 'reports', to: 'reports#index'
+  get 'categories/index', to: 'categories#index'
+  post 'reports/filter', to: 'reports#filter'
+  post 'categories/add', to: 'categories#add_category'
 
   put 'enable_reports', to: 'products#updateReports'
   put 'enable_benchmark', to: 'products#updateBenchmark'

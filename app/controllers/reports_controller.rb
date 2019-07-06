@@ -1,159 +1,96 @@
 class ReportsController < ApplicationController
-
   # GET /reports
   def index
     @user = current_user
+    @categories = current_user.categories
+    @ratings = [1, 2, 3, 4, 5]
+
     @comments = current_user.comments
     @user_url = url_for controller: 'comments', action: 'new', shop: @user.hash_for_url
+  end
 
-    @limpieza = @comments.select {|comment| comment.category == "Limpieza"}
-    @atencionalcliente = @comments.select {|comment| comment.category == "Atención al cliente"}
-    @ubicacion = @comments.select {|comment| comment.category == "Ubicación"}
-    @seguridad = @comments.select {|comment| comment.category == "Seguridad"}
-    @otras = @comments.select {|comment| comment.category == "Otras"}
+  def get_comments_category(category)
+    @comments.select {|comment| comment.category == category}
+  end
 
-    @all_categories = [@limpieza.count, @atencionalcliente.count, @ubicacion.count, @seguridad.count, @otras.count]
+  def build_data_category(category_comments)
+    [category_comments.select{|comment| comment.rating == 1}.count, category_comments.select{|comment| comment.rating == 2}.count,
+     category_comments.select{|comment| comment.rating == 3}.count, category_comments.select{|comment| comment.rating == 4}.count,
+     category_comments.select{|comment| comment.rating == 5}.count]
+  end
 
-    @dataatencionalcliente = [@atencionalcliente.select{|comment| comment.rating == 1}.count, @atencionalcliente.select{|comment| comment.rating == 2}.count,
-                              @atencionalcliente.select{|comment| comment.rating == 3}.count, @atencionalcliente.select{|comment| comment.rating == 4}.count,
-                              @atencionalcliente.select{|comment| comment.rating == 5}.count]
+  def build_categories_by_rating(number_rating)
+    data = []
+    @categories.each do |category|
+      category = @comments.select{|comment| comment.rating == number_rating}.select {|comment| comment.category == category}.count
+      data.push(category)
+    end
+    data
+  end
 
-    @datalimpieza = [@limpieza.select{|comment| comment.rating == 1}.count, @limpieza.select{|comment| comment.rating == 2}.count,
-                              @limpieza.select{|comment| comment.rating == 3}.count, @limpieza.select{|comment| comment.rating == 4}.count,
-                              @limpieza.select{|comment| comment.rating == 5}.count]
+  def build_all_categories
+    data_all_categories = []
+    @ratings.each do |rating|
+      data_all_categories.push(build_categories_by_rating(rating))
+    end
+    data_all_categories
+  end
 
-    @dataubicacion = [@ubicacion.select{|comment| comment.rating == 1}.count, @ubicacion.select{|comment| comment.rating == 2}.count,
-                              @ubicacion.select{|comment| comment.rating == 3}.count, @ubicacion.select{|comment| comment.rating == 4}.count,
-                              @ubicacion.select{|comment| comment.rating == 5}.count]
-
-    @dataseguridad = [@seguridad.select{|comment| comment.rating == 1}.count, @seguridad.select{|comment| comment.rating == 2}.count,
-                      @seguridad.select{|comment| comment.rating == 3}.count, @seguridad.select{|comment| comment.rating == 4}.count,
-                      @seguridad.select{|comment| comment.rating == 5}.count]
-
-    @dataotras= [@otras.select{|comment| comment.rating == 1}.count, @otras.select{|comment| comment.rating == 2}.count,
-                      @otras.select{|comment| comment.rating == 3}.count, @otras.select{|comment| comment.rating == 4}.count,
-                      @otras.select{|comment| comment.rating == 5}.count]
-
-    @data_one = [@comments.select{|comment| comment.rating == 1}.select {|comment| comment.category == "Limpieza"}.count,
-                 @comments.select{|comment| comment.rating == 1}.select {|comment| comment.category == "Atención al cliente"}.count,
-                 @comments.select{|comment| comment.rating == 1}.select {|comment| comment.category == "Ubicación"}.count,
-                 @comments.select{|comment| comment.rating == 1}.select {|comment| comment.category == "Seguridad"}.count,
-                 @comments.select{|comment| comment.rating == 1}.select {|comment| comment.category == "Otras"}.count]
-
-    @data_two = [@comments.select{|comment| comment.rating == 2}.select {|comment| comment.category == "Limpieza"}.count,
-                 @comments.select{|comment| comment.rating == 2}.select {|comment| comment.category == "Atención al cliente"}.count,
-                 @comments.select{|comment| comment.rating == 2}.select {|comment| comment.category == "Ubicación"}.count,
-                 @comments.select{|comment| comment.rating == 2}.select {|comment| comment.category == "Seguridad"}.count,
-                 @comments.select{|comment| comment.rating == 2}.select {|comment| comment.category == "Otras"}.count]
-
-    @data_three = [@comments.select{|comment| comment.rating == 3}.select {|comment| comment.category == "Limpieza"}.count,
-                 @comments.select{|comment| comment.rating == 3}.select {|comment| comment.category == "Atención al cliente"}.count,
-                 @comments.select{|comment| comment.rating == 3}.select {|comment| comment.category == "Ubicación"}.count,
-                 @comments.select{|comment| comment.rating == 3}.select {|comment| comment.category == "Seguridad"}.count,
-                 @comments.select{|comment| comment.rating == 3}.select {|comment| comment.category == "Otras"}.count]
-
-    @data_four = [@comments.select{|comment| comment.rating == 4}.select {|comment| comment.category == "Limpieza"}.count,
-                 @comments.select{|comment| comment.rating == 4}.select {|comment| comment.category == "Atención al cliente"}.count,
-                 @comments.select{|comment| comment.rating == 4}.select {|comment| comment.category == "Ubicación"}.count,
-                 @comments.select{|comment| comment.rating == 4}.select {|comment| comment.category == "Seguridad"}.count,
-                 @comments.select{|comment| comment.rating == 4}.select {|comment| comment.category == "Otras"}.count]
-
-    @data_five = [@comments.select{|comment| comment.rating == 5}.select {|comment| comment.category == "Limpieza"}.count,
-                 @comments.select{|comment| comment.rating == 5}.select {|comment| comment.category == "Atención al cliente"}.count,
-                 @comments.select{|comment| comment.rating == 5}.select {|comment| comment.category == "Ubicación"}.count,
-                 @comments.select{|comment| comment.rating == 5}.select {|comment| comment.category == "Seguridad"}.count,
-                 @comments.select{|comment| comment.rating == 5}.select {|comment| comment.category == "Otras"}.count]
+  def calculate_range_max_category
+    all_categories = []
+    @categories.each do |category|
+      all_categories.push(get_comments_category(category).count)
+    end
+    all_categories
+  end
 
 
+  def generate_graphics_category(data_category, is_all_categories)
 
-    @bar_chart_atencionalcliente = Gchart.bar(
+    bar_colors = ['00CCCC']
+    legend = ['Cantidad de comentarios']
+    title = params[:category]
+    axis_labels = ['1|2|3|4|5']
+    max_range = data_category.max
+
+    if is_all_categories
+      bar_colors = ['CC0000', 'FF6600', 'FFCC00', '00FFFF', '00CC00']
+      legend = ['1 estrella', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas']
+      title = "Comentarios agrupados por categoría"
+      axis_labels = [@categories]
+      max_range = calculate_range_max_category.max
+    end
+
+    @bar_chart_selected = Gchart.bar(
         :type => 'bar',
         :size => '600x400',
-        :bar_colors => ['0000FF'],
-        :title => "Atención al cliente",
+        :bar_colors => bar_colors,
+        :title => title,
         :bg => 'EFEFEF',
-        :legend => ['Cantidad de comentarios'],
-        :data => [@dataatencionalcliente],
+        :legend => legend,
+        :data => data_category,
         :axis_with_labels => [['x'], ['y']],
-        :axis_range => [nil, [0, @dataatencionalcliente.max]],
+        :axis_range => [nil, [0, max_range, 1]],
         :min_value => 0,
-        :axis_labels => ['1|2|3|4|5'],
-        :stacked => false,
-        )
-
-    @bar_chart_limpieza = Gchart.bar(
-        :type => 'bar',
-        :size => '600x400',
-        :bar_colors => ['00FF00'],
-        :title => "Limpieza",
-        :bg => 'EFEFEF',
-        :legend => ['Cantidad de comentarios'],
-        :data => [@datalimpieza],
-        :axis_with_labels => [['x'], ['y']],
-        :axis_range => [nil, [0, @datalimpieza.max]],
-        :min_value => 0,
-        :axis_labels => ['1|2|3|4|5'],
-        :stacked => false,
-        )
-
-    @bar_chart_seguridad = Gchart.bar(
-        :type => 'bar',
-        :size => '600x400',
-        :bar_colors => ['FF0000'],
-        :title => "Seguridad",
-        :bg => 'EFEFEF',
-        :legend => ['Cantidad de comentarios'],
-        :data => [@dataseguridad],
-        :axis_with_labels => [['x'], ['y']],
-        :axis_range => [nil, [0, @dataseguridad.max]],
-        :min_value => 0,
-        :axis_labels => ['1|2|3|4|5'],
-        :stacked => false,
-        )
-
-    @bar_chart_ubicacion = Gchart.bar(
-        :type => 'bar',
-        :size => '600x400',
-        :bar_colors => ['000000'],
-        :title => "Ubicación",
-        :bg => 'EFEFEF',
-        :legend => ['Cantidad de comentarios'],
-        :data => [@dataubicacion],
-        :axis_with_labels => [['x'], ['y']],
-        :axis_range => [nil, [0, @dataubicacion.max]],
-        :min_value => 0,
-        :axis_labels => ['1|2|3|4|5'],
-        :stacked => false,
-        )
-
-    @bar_chart_otras = Gchart.bar(
-        :type => 'bar',
-        :size => '600x400',
-        :bar_colors => ['FFFF00'],
-        :title => "Otras",
-        :bg => 'EFEFEF',
-        :legend => ['Cantidad de comentarios'],
-        :data => [@dataotras],
-        :axis_with_labels => [['x'], ['y']],
-        :axis_range => [nil, [0, @dataotras.max]],
-        :min_value => 0,
-        :axis_labels => ['1|2|3|4|5'],
-        :stacked => false,
-        )
-
-    @bar_chart_all = Gchart.bar(
-        :type => 'bar',
-        :size => '600x400',
-        :bar_colors => ['FFFF00', '0000FF', '00FF00', 'FF0000', '000000'],
-        :title => "Comentarios agrupados por categoría",
-        :bg => 'EFEFEF',
-        :legend => ['1 estrella', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas'],
-        :data => [@data_one, @data_two, @data_three, @data_four, @data_five],
-        :axis_with_labels => [['x'], ['y']],
-        :axis_range => [nil, [0, @all_categories.max]],
-        :min_value => 0,
+        :axis_labels => axis_labels,
         :bar_width_and_spacing => '25,60',
-        :axis_labels => ['Limpieza|Atención al cliente|Ubicación|Seguridad|Otras'],
-    )
+        )
+  end
+
+  def filter
+    if params[:filter]
+      index
+      is_all_categories = false
+      @selected_category = params[:category]
+      if params[:category] != "Todas"
+        comments_category = get_comments_category(params[:category])
+        data_category = build_data_category(comments_category)
+      else
+        is_all_categories = true
+        data_category = build_all_categories
+      end
+
+      generate_graphics_category(data_category, is_all_categories)
+    end
   end
 end

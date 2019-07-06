@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 2019_07_03_235159) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
@@ -62,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_235159) do
     t.datetime "updated_at", null: false
     t.string "name", default: "", null: false
     t.string "hash_for_url", default: "", null: false
+    t.text "categories", default: ["Limpieza", "Atención al cliente", "Seguridad", "Ubicación"], array: true
     t.boolean "has_reports", default: false
     t.boolean "has_benchmark", default: false
     t.index ["email"], name: "index_users_on_email", unique: true

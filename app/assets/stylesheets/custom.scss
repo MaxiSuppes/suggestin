@@ -182,10 +182,88 @@ html {
   text-overflow: ellipsis;
 }
 
-
 .comment-image {
   width: 700px;
   height: 700px;
   object-fit: cover;
   transform: rotate(90deg);
+}
+
+.add-categories {
+  display: flex;
+  & .actions {
+    margin: 23px 0 0 20px;
+  }
+}
+
+.register {
+  margin: 15px 0 10px 0;
+}
+
+.input-user {
+  margin-bottom: 10px;
+}
+
+.btn.main-btn {
+  margin-bottom: 15px;
+  width: 100%;
+  background-color: black;
+  font-weight: bold;
+  border-color: black;
+  color: #fff;
+
+  &:hover {
+    color: yellow;
+  }
+}
+
+.add-btn {
+  margin-left: 15px;
+}
+
+.actual-categories {
+  display: inline-block;
+}
+
+.close.close-categories {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  float: inherit;
+  color: blue;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 21px;
+  width: 2px;
+  background-color: blue;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.category {
+  display: flex;
+  background-color: lightblue;
+  margin-bottom: 5px;
+}
+
+.main-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.option-menu {
+  width: 38%;
 }
