@@ -206,6 +206,14 @@ html {
 .btn.main-btn {
   margin-bottom: 15px;
   width: 100%;
+  background-color: black;
+  font-weight: bold;
+  border-color: black;
+  color: #fff;
+
+  &:hover {
+    color: yellow;
+  }
 }
 
 .add-btn {
