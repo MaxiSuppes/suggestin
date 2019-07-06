@@ -33,13 +33,8 @@
         <div class="form-group">
           <label for="comment_rating" class="col-sm-3 control-label">Calificación</label>
           <div class="col-sm-9 col-lg-6">
-            <select name="comment[rating]" id="comment_rating" class="form-control">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+            <input type="hidden" name="comment[rating]" id="comment_rating" class="form-control"/>
+            <div class="ui star rating" style="font-size: 1.5em" data-rating="1" data-max-rating="5"></div>
           </div>
         </div>
 
@@ -74,3 +69,12 @@
     </div>
   </div>
 </div>
+<%= javascript_tag do %>
+  $(document).ready(function() {
+      var inputRatingSelector = $('#comment_rating');
+      inputRatingSelector.val(1);
+      $('.ui.rating').rating('setting', 'onRate', function(value) {
+          inputRatingSelector.val(value);
+      });
+  });
+<% end %>

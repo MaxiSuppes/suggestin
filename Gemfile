@@ -14,6 +14,9 @@ gem 'rails'
 # gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'bootstrap-sass'
 
+# Semantic ui
+gem 'semantic-ui-sass'
+
 # Sprockets
 gem 'sprockets-rails'
 
