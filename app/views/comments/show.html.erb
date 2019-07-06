@@ -14,8 +14,9 @@
         <p>
           <%= @comment.content %>
         </p>
-        <p>Calificación: <%= @comment.rating %></p>
-        <p>Categoría: <%= @comment.category %></p>
+        <div>
+          <span>Calificación: </span><div class="ui star rating" style="font-size: 1.5em" data-rating="<%= @comment.rating %>"></div>
+        </div>
         <% if @comment.image.attached? %>
           <img id="image" class="comment-image" align="middle" src="<%= url_for(@comment.image)%>" alt="" />
         <% end %>
@@ -34,3 +35,8 @@
     </div>
   </div>
 </div>
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $('.ui.rating').rating({maxRating: 5, interactive: false});
+  });
+<% end %>
