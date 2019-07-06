@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   #get ':shop_name' , to: 'comments#new_whit_shop_name'
   get 'reports', to: 'reports#index'
 
-  put 'enable_reports', to: 'enable_reports#updateReports'
-  put 'enable_benchmark', to: 'enable_reports#updateBenchmark'
+  put 'enable_reports', to: 'products#updateReports'
+  put 'enable_benchmark', to: 'products#updateBenchmark'
+
+  delete 'delete_reports', to: 'products#deleteReports'
+  delete 'delete_benchmark', to: 'products#deleteBenchmark'
+
 end
