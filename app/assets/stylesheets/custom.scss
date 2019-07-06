@@ -211,6 +211,10 @@ html {
   font-weight: bold;
   border-color: black;
   color: #fff;
+
+  &:hover {
+    color: yellow;
+  }
 }
 
 .add-btn {
