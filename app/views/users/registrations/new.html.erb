@@ -14,6 +14,12 @@
   </div>
 
   <div class="field">
+    <%= f.label :item, "Rubro" %><br />
+    <%= f.select :item, options_for_select([["Gastronomia", "Gastronomia"], ["Hoteleria", "Hoteleria"],  ["Kioscos", "Kioscos"],  ["Shoppings", "Shoppings"], ["Moda", "Moda"],  ["Otro", "Otro"]]) %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :password, 'Contraseña' %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> caracteres mínimos)</em>
