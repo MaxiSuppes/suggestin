@@ -1,16 +1,15 @@
-<h2>Menú principal</h2>
-<div><%= link_to 'Ver comentarios', {controller: 'comments', action: 'index'}, :class => 'show-comments' %></div>
-<div><%= link_to 'Ver reportes', {controller: 'reports', action: 'index'}, :class => 'show-reports' %></div>
-<div><%= link_to 'Ver benchmarks', {controller: 'benchmarks', action: 'index'}, :class => 'show-reports' %></div>
+<h2 class="menu-title"><p>Bienvenido a ReviewIT</p>¿Qué desea hacer?</h2>
 
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-3 center">
-    <h3>Escaneá este código y dejanos tu feedback:</h3>
-    <div class="thumbnail">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= @user_url %>" alt="Código QR" title=""/>
-    </div>
-    <%= link_to 'Imprimir', {controller: 'print', action: 'index'}, :class => 'btn btn-primary' %>
+<div class="main-options">
+  <div class="option-menu"><%= link_to 'Ver comentarios', {controller: 'comments', action: 'index'}, :class => 'main-btn btn' %></div>
+  <% if @current_user.has_reports %>
+    <div class="option-menu"><%= link_to 'Ver reportes', {controller: 'reports', action: 'index'}, :class => 'main-btn btn' %></div>
+    <div class="option-menu"><%= link_to 'Ver benchmarks', {controller: 'benchmarks', action: 'index'}, :class => 'main-btn btn' %></div>
+    <div class="option-menu"><%= link_to 'Modificar categorías', {controller: 'categories', action: 'index'}, :class => 'main-btn btn' %></div>
+<% end %>
+  <h3>Escaneá este código y dejanos tu feedback:</h3>
+  <div class="thumbnail">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= @user_url %>" alt="Código QR" title=""/>
   </div>
-  <div class="col-sm-5"></div>
+  <%= link_to 'Imprimir', {controller: 'print', action: 'index'}, :class => 'btn btn-primary' %>
 </div>

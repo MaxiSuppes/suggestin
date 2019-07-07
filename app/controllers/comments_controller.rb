@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = current_user.comments
+    @comments = current_user.comments.order('created_at desc')
     @user_url = url_for controller: 'comments', action: 'new', shop: current_user.hash_for_url
   end
 
@@ -76,6 +76,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :name, :email, :rating, :category)
+    params.require(:comment).permit(:content, :user_id, :name, :email, :rating, :category, :image)
   end
 end

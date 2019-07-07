@@ -1,10 +1,10 @@
 class ReportsController < ApplicationController
   # GET /reports
   def index
-    @categories = ["Limpieza", "Atención al cliente", "Ubicación", "Seguridad", "Otras"]
+    @user = current_user
+    @categories = current_user.categories
     @ratings = [1, 2, 3, 4, 5]
 
-    @user = current_user
     @comments = current_user.comments
     @user_url = url_for controller: 'comments', action: 'new', shop: @user.hash_for_url
   end
@@ -54,10 +54,10 @@ class ReportsController < ApplicationController
     max_range = data_category.max
 
     if is_all_categories
-      bar_colors = ['FFFF00', '0000FF', '00FF00', 'FF0000', '000000']
+      bar_colors = ['CC0000', 'FF6600', 'FFCC00', '00FFFF', '00CC00']
       legend = ['1 estrella', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas']
       title = "Comentarios agrupados por categoría"
-      axis_labels = ['Limpieza|Atención al cliente|Ubicación|Seguridad|Otras']
+      axis_labels = [@categories]
       max_range = calculate_range_max_category.max
     end
 

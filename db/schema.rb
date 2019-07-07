@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_07_06_155543) do
     t.boolean "has_reports", default: false
     t.boolean "has_benchmark", default: false
     t.string "item"
+    t.text "categories", default: ["Limpieza", "Atención al cliente", "Seguridad", "Ubicación"], array: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["hash_for_url"], name: "index_users_on_hash_for_url", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

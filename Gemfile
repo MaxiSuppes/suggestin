@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Ruby version for deploy
+ruby "2.6.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
@@ -12,6 +14,9 @@ gem 'rails'
 # Bootstrap
 # gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'bootstrap-sass'
+
+# Semantic ui
+gem 'semantic-ui-sass'
 
 # Sprockets
 gem 'sprockets-rails'
@@ -68,3 +73,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 gem 'googlecharts'
+
+# Email sender
+gem 'sendgrid-ruby'
