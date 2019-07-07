@@ -4,9 +4,10 @@
   <div class="option-menu"><%= link_to 'Ver comentarios', {controller: 'comments', action: 'index'}, :class => 'main-btn btn' %></div>
   <% if @current_user.has_reports %>
     <div class="option-menu"><%= link_to 'Ver reportes', {controller: 'reports', action: 'index'}, :class => 'main-btn btn' %></div>
-    <div class="option-menu"><%= link_to 'Ver benchmarks', {controller: 'benchmarks', action: 'index'}, :class => 'main-btn btn' %></div>
     <div class="option-menu"><%= link_to 'Modificar categorías', {controller: 'categories', action: 'index'}, :class => 'main-btn btn' %></div>
 <% end %>
+  <div class="option-menu"><%= link_to 'Ver benchmarks', {controller: 'benchmarks', action: 'index'}, :class => 'main-btn btn' %></div>
+
   <h3>Escaneá este código y dejanos tu feedback:</h3>
   <div class="thumbnail">
     <img src="https://api.qrserver.com/v1/create-qr-code/?data=<%= @user_url %>" alt="Código QR" title=""/>
