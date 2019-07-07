@@ -6,7 +6,7 @@
   <div class="filter-options">
 
     <div class="report-select">
-      <%= select_tag("category", options_for_select(["Todas", "Limpieza", "Atención al cliente", "Ubicación", "Seguridad", "Otras"], :selected => @selected_category)) %>
+      <%= select_tag("category", options_for_select(["Todas"] + @user.categories, :selected => @selected_category)) %>
     </div>
 
     <div class="form-group btn btn-primary">

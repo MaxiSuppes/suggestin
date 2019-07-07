@@ -10,7 +10,8 @@ class BenchmarksController < ApplicationController
   end
 
   def compare
-      @selected_category = params[:category]
+    @user = current_user
+    @selected_category = params[:category]
       users_with_same_item = User.where(item: current_user.item)
       user_ids = users_with_same_item.pluck :id
       @comments = Comment.where(:user_id => user_ids)
