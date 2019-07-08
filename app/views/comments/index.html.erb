@@ -1,6 +1,29 @@
 <div class="container">
   <h1 class="center">Comentarios</h1>
   <div class="row">
+
+    <div class="filter-options">
+
+      <div class="report-select">
+        <h4>Filtrar por categoría:</h4>
+        <%= select_tag("category", options_for_select(["Todas"] + @user.categories, :selected => @selected_category)) %>
+      </div>
+
+      <div class="report-select">
+        <h4>Elegir rango de fecha:</h4>
+        <%= text_field_tag :start_date_comment, params[:start_date], placeholder: 'A partir de' %>
+      </div>
+
+      <div class="report-select no-title">
+        <%= text_field_tag :end_date_comment, params[:end_date], placeholder: 'Hasta' %>
+      </div>
+
+      <div class="form-group btn btn-primary no-title">
+        <%=  submit_tag 'Filtrar', :name => 'filter', :class => 'submit-btn btn btn-primary' %>
+      </div>
+
+    </div>
+
     <% @comments.each do |comment| %>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -32,5 +55,9 @@
   </div>
 </div>
 
-
-
+<%= javascript_tag do %>
+  $(document).ready(function(){
+  $('#start_date_comment').datepicker({ dateFormat: 'dd-mm-yy' });
+  $('#end_date_comment').datepicker({ dateFormat: 'dd-mm-yy' })
+  });
+<% end %>
