@@ -53,7 +53,6 @@ class ReportsController < ApplicationController
       title = "Comentarios agrupados por categoría"
       axis_labels = [@categories]
       max_range = calculate_range_max_category
-      puts max_range
       max_value = max_range
     else
       bar_colors = ['00CCCC']
@@ -62,7 +61,6 @@ class ReportsController < ApplicationController
       axis_labels = ['1|2|3|4|5']
       max_range = data_category.max
       max_value = max_range.to_i + 5
-      puts max_value
     end
 
     @bar_chart_selected = Gchart.bar(
