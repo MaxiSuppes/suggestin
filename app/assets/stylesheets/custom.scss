@@ -79,7 +79,6 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: white;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -266,4 +265,27 @@ html {
 
 .option-menu {
   width: 38%;
+}
+
+.container-header {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+}
+
+.no-title {
+  margin-top: 39px;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+}
+:-moz-placeholder {
+  font-style: italic;
+}
+::-moz-placeholder {
+  font-style: italic;
+}
+:-ms-input-placeholder {
+  font-style: italic;
 }

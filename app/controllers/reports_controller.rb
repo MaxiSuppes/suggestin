@@ -4,9 +4,21 @@ class ReportsController < ApplicationController
     @user = current_user
     @categories = current_user.categories
     @ratings = [1, 2, 3, 4, 5]
+  end
 
-    @comments = current_user.comments
-    @user_url = url_for controller: 'comments', action: 'new', shop: @user.hash_for_url
+  def filter_comments_by_date
+    start_date = params[:start_date]
+    end_date = params[:end_date]
+
+    if start_date.empty? && end_date.empty?
+      @user.comments
+    elsif start_date.empty?
+      @user.comments.where("created_at <= :end_date", {end_date: end_date})
+    elsif end_date.empty?
+      @user.comments.where("created_at >= :start_date", {start_date: start_date})
+    else
+      @user.comments.where(created_at: (start_date)..end_date)
+    end
   end
 
   def get_comments_category(category)
@@ -41,24 +53,26 @@ class ReportsController < ApplicationController
     @categories.each do |category|
       all_categories.push(get_comments_category(category).count)
     end
-    all_categories
+    all_categories.max
   end
 
 
   def generate_graphics_category(data_category, is_all_categories)
-
-    bar_colors = ['00CCCC']
-    legend = ['Cantidad de comentarios']
-    title = params[:category]
-    axis_labels = ['1|2|3|4|5']
-    max_range = data_category.max
 
     if is_all_categories
       bar_colors = ['CC0000', 'FF6600', 'FFCC00', '00FFFF', '00CC00']
       legend = ['1 estrella', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas']
       title = "Comentarios agrupados por categoría"
       axis_labels = [@categories]
-      max_range = calculate_range_max_category.max
+      max_range = calculate_range_max_category
+      max_value = max_range
+    else
+      bar_colors = ['00CCCC']
+      legend = ['Cantidad de comentarios']
+      title = params[:category]
+      axis_labels = ['1|2|3|4|5']
+      max_range = data_category.max
+      max_value = max_range.to_i + 5
     end
 
     @bar_chart_selected = Gchart.bar(
@@ -71,6 +85,7 @@ class ReportsController < ApplicationController
         :data => data_category,
         :axis_with_labels => [['x'], ['y']],
         :axis_range => [nil, [0, max_range, 1]],
+        :max_value => max_value,
         :min_value => 0,
         :axis_labels => axis_labels,
         :bar_width_and_spacing => '25,60',
@@ -80,6 +95,7 @@ class ReportsController < ApplicationController
   def filter
     if params[:filter]
       index
+      @comments = filter_comments_by_date
       is_all_categories = false
       @selected_category = params[:category]
       if params[:category] != "Todas"
@@ -89,7 +105,6 @@ class ReportsController < ApplicationController
         is_all_categories = true
         data_category = build_all_categories
       end
-
       generate_graphics_category(data_category, is_all_categories)
     end
   end

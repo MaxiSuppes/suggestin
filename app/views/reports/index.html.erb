@@ -1,18 +1,34 @@
 <h1>Reportes</h1>
-<h4>Filtrar por categoría:</h4>
 
 <%= form_tag "/reports/filter" do %>
 
   <div class="filter-options">
 
     <div class="report-select">
+      <h4>Filtrar por categoría:</h4>
       <%= select_tag("category", options_for_select(["Todas"] + @user.categories, :selected => @selected_category)) %>
     </div>
 
-    <div class="form-group btn btn-primary">
+    <div class="report-select">
+      <h4>Elegir rango de fecha:</h4>
+      <%= text_field_tag :start_date, params[:start_date], placeholder: 'A partir de' %>
+    </div>
+
+    <div class="report-select no-title">
+      <%= text_field_tag :end_date, params[:end_date], placeholder: 'Hasta' %>
+    </div>
+
+    <div class="form-group btn btn-primary no-title">
         <%=  submit_tag 'Filtrar', :name => 'filter', :class => 'submit-btn btn btn-primary' %>
     </div>
 
   </div>
 
+<% end %>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $('#start_date').datepicker({ dateFormat: 'dd-mm-yy' });
+    $('#end_date').datepicker({ dateFormat: 'dd-mm-yy' })
+  });
 <% end %>

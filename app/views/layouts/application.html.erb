@@ -11,13 +11,18 @@
 
 <body>
 <header class='navbar navbar-fixed-top navbar-inverse'>
-  <div class="container">
-    <div class='col-sm-4'>
-      <%= link_to 'ReviewIT', :root, id: 'logo' %>
+  <div class="container-header">
+    <div class='col-sm-3'>
+      <span id="logo">REVIEWIT</span>
     </div>
     <div class="col-sm-1 pull-right">
       <% if user_signed_in? %>
           <%= link_to('Salir', destroy_user_session_path, :method => :delete, class: 'logout') %>
+      <% end %>
+    </div>
+    <div class="col-sm-1 pull-right">
+      <% if user_signed_in? %>
+        <%= link_to 'Inicio', :root, class: 'logout' %>
       <% end %>
     </div>
   </div>
@@ -34,7 +39,7 @@
 </div>
 <div id="footer">
   <div class="container">
-    <p class="pull-left"><%= link_to 'Contacto', 'https://mail.google.com/mail/?view=cm&fs=1&to=contacto@suggestin.com', class: 'contact-text' %></p>
+    <p class="pull-left"><%= link_to 'Contacto', 'https://mail.google.com/mail/?view=cm&fs=1&to=contacto@reviewit.com', class: 'contact-text' %></p>
   </div>
 </div>
 </body>

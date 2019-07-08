@@ -15,4 +15,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require semantic-ui/rating
+//= require jquery-ui/datepicker
 //= require_tree .
