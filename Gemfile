@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Ruby version for deploy
-#ruby "2.6.3"
+ruby "2.6.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
