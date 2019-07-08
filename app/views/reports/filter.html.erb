@@ -9,6 +9,14 @@
       <%= select_tag("category", options_for_select(["Todas"] + @user.categories, :selected => @selected_category)) %>
     </div>
 
+    <div class="report-select">
+      <%= text_field_tag :start_date %>
+    </div>
+
+    <div class="report-select">
+      <%= text_field_tag :end_date %>
+    </div>
+
     <div class="form-group btn btn-primary">
       <%=  submit_tag 'Filtrar', :name => 'filter', :class => 'submit-btn btn btn-primary' %>
     </div>
@@ -20,3 +28,10 @@
 <div class="reports">
   <%= image_tag @bar_chart_selected %>
 </div>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+  $('#start_date').datepicker({ dateFormat: 'dd-mm-yy' });
+  $('#end_date').datepicker({ dateFormat: 'dd-mm-yy' })
+  });
+<% end %>
