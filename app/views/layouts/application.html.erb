@@ -21,7 +21,9 @@
       <% end %>
     </div>
     <div class="col-sm-1 pull-right">
+      <% if user_signed_in? %>
         <%= link_to 'Inicio', :root, class: 'logout' %>
+      <% end %>
     </div>
   </div>
 </header>
