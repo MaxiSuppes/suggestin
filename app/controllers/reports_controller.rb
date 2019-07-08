@@ -41,24 +41,28 @@ class ReportsController < ApplicationController
     @categories.each do |category|
       all_categories.push(get_comments_category(category).count)
     end
-    all_categories
+    all_categories.max
   end
 
 
   def generate_graphics_category(data_category, is_all_categories)
-
-    bar_colors = ['00CCCC']
-    legend = ['Cantidad de comentarios']
-    title = params[:category]
-    axis_labels = ['1|2|3|4|5']
-    max_range = data_category.max
 
     if is_all_categories
       bar_colors = ['CC0000', 'FF6600', 'FFCC00', '00FFFF', '00CC00']
       legend = ['1 estrella', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas']
       title = "Comentarios agrupados por categoría"
       axis_labels = [@categories]
-      max_range = calculate_range_max_category.max
+      max_range = calculate_range_max_category
+      puts max_range
+      max_value = max_range
+    else
+      bar_colors = ['00CCCC']
+      legend = ['Cantidad de comentarios']
+      title = params[:category]
+      axis_labels = ['1|2|3|4|5']
+      max_range = data_category.max
+      max_value = max_range.to_i + 5
+      puts max_value
     end
 
     @bar_chart_selected = Gchart.bar(
@@ -71,6 +75,7 @@ class ReportsController < ApplicationController
         :data => data_category,
         :axis_with_labels => [['x'], ['y']],
         :axis_range => [nil, [0, max_range, 1]],
+        :max_value => max_value,
         :min_value => 0,
         :axis_labels => axis_labels,
         :bar_width_and_spacing => '25,60',
