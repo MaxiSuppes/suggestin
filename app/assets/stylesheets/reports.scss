@@ -4,6 +4,10 @@
 
 .report-select {
   margin-right: 15px;
+  & > input {
+    height: 50px;
+  }
+
 }
 
 .reports {
