@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'benchmarks', to: 'benchmarks#index'
   post 'reports/filter', to: 'reports#filter'
   post 'categories/add', to: 'categories#add_category'
+  post 'comments/filter', to: 'comments#filter'
 
   put 'enable_reports', to: 'products#updateReports'
   put 'enable_benchmark', to: 'products#updateBenchmark'

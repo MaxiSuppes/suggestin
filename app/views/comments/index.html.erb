@@ -2,27 +2,31 @@
   <h1 class="center">Comentarios</h1>
   <div class="row">
 
-    <div class="filter-options">
+    <%= form_tag "/comments/filter" do %>
 
-      <div class="report-select">
-        <h4>Filtrar por categoría:</h4>
-        <%= select_tag("category", options_for_select(["Todas"] + @user.categories, :selected => @selected_category)) %>
+      <div class="filter-options">
+
+        <div class="report-select">
+          <h4>Filtrar por categoría:</h4>
+          <%= select_tag("category", options_for_select(["Todas"] + @user.categories, :selected => @selected_category)) %>
+        </div>
+
+        <div class="report-select">
+          <h4>Elegir rango de fecha:</h4>
+          <%= text_field_tag :start_date_comment, params[:start_date], placeholder: 'A partir de' %>
+        </div>
+
+        <div class="report-select no-title">
+          <%= text_field_tag :end_date_comment, params[:end_date], placeholder: 'Hasta' %>
+        </div>
+
+        <div class="form-group btn btn-primary no-title">
+          <%=  submit_tag 'Filtrar', :name => 'filter', :class => 'submit-btn btn btn-primary' %>
+        </div>
+
       </div>
 
-      <div class="report-select">
-        <h4>Elegir rango de fecha:</h4>
-        <%= text_field_tag :start_date_comment, params[:start_date], placeholder: 'A partir de' %>
-      </div>
-
-      <div class="report-select no-title">
-        <%= text_field_tag :end_date_comment, params[:end_date], placeholder: 'Hasta' %>
-      </div>
-
-      <div class="form-group btn btn-primary no-title">
-        <%=  submit_tag 'Filtrar', :name => 'filter', :class => 'submit-btn btn btn-primary' %>
-      </div>
-
-    </div>
+    <% end %>
 
     <% @comments.each do |comment| %>
         <div class="panel panel-default">
