@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'print', to: 'print#index'
   get 'reports', to: 'reports#index'
   get 'categories/index', to: 'categories#index'
+  get 'benchmarks', to: 'benchmarks#index'
   post 'reports/filter', to: 'reports#filter'
   post 'categories/add', to: 'categories#add_category'
 
@@ -29,5 +30,7 @@ Rails.application.routes.draw do
 
   delete 'delete_reports', to: 'products#deleteReports'
   delete 'delete_benchmark', to: 'products#deleteBenchmark'
+
+  post 'benchmarks/compare', to: 'benchmarks#compare'
 
 end

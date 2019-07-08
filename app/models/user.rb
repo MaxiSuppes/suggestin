@@ -11,4 +11,5 @@ class User < ApplicationRecord
   def add_hash_for_url
     self.hash_for_url = Sysrandom.hex(32)
   end
+
 end

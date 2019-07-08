@@ -1,0 +1,80 @@
+<h1>Benchmarks</h1>
+<h4>Filtrar por rubro:</h4>
+
+<%= form_tag "/benchmarks/compare" do %>
+
+  <div class="filter-options">
+
+    <div class="report-select">
+      <%= select_tag("category", options_for_select(["Todas"] + @user.categories, :selected => @selected_category)) %>
+    </div>
+
+    <div class="form-group btn btn-primary">
+      <%=  submit_tag 'Comparar', :name => 'compare', :class => 'submit-btn btn btn-primary' %>
+    </div>
+
+
+  </div>
+
+<% end %>
+
+  <style type="text/css" media="screen">
+
+    div {
+      margin-bottom: 1em;
+    }
+
+    code {
+      color: gray;
+    }
+    .slider-width {
+      width: 200px;
+      color: #337ab7;
+    }
+  </style>
+
+  <div class="slider-width">Puntaje promedio propio: <%= @current_score %></div>
+  <div class="slider-width"><input id="myRange" class="slider" max="100" min="1" type="range" value=<%= @current_score_slider %> disabled="disabled" /></div>
+  <div class="slider-width" style="text-align: left;">Puntaje promedio por rubro: <%= @global_score %></div>
+  <div class="slider-width"><input id="myRange" class="slider" max="100" min="1" type="range" value=<%= @global_score_slider %> disabled="disabled"  /></div>
+
+  <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0; width: 600px}
+    .tg .tg-4tw2{background-color:#b4ecb4;text-align:left;vertical-align:top}
+    .tg .tg-0qe0{background-color:#ecf4ff;text-align:left;vertical-align:top}
+    .tg .tg-m9r4{background-color:#ffffc7;text-align:left;vertical-align:top}
+    .tg .tg-ejdy{background-color:#ffccc9;color:#000000;text-align:left;vertical-align:top}
+  </style>
+  <table class="tg">
+    <tr>
+      <th class="tg-0qe0">Ranking</th>
+      <th class="tg-0qe0">Nombre</th>
+      <th class="tg-0qe0">Rating</th>
+    </tr>
+    <tr>
+      <td class="tg-4tw2"><b><%= @ranking[0][:index] %></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[0][:name] %></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[0][:average] %></b></td>
+    </tr>
+    <tr bgcolor="#AAAAAA">
+      <td class="tg-4tw2"><b><%= @ranking[1][:index] if @ranking[1]%></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[1][:name] if @ranking[1]%></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[1][:average] if @ranking[1]%></b></td>
+    </tr>
+    <tr>
+      <td class="tg-4tw2"><b><%= @ranking[2][:index] if @ranking[2]%></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[2][:name] if @ranking[2]%></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[2][:average] if @ranking[2]%></b></td>
+    </tr>
+    <tr>
+      <td class="tg-4tw2"><b><%= @ranking[3][:index] if @ranking[3] %></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[3][:name] if @ranking[3]%></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[3][:average] if @ranking[3] %></b></td>
+    </tr>
+    <tr>
+      <td class="tg-4tw2"><b><%= @ranking[4][:index] if @ranking[4]%></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[4][:name] if @ranking[4]%></b></td>
+      <td class="tg-4tw2"><b><%= @ranking[4][:average] if @ranking[4]%></b></td>
+    </tr>
+  </table>
+
