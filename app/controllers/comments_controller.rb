@@ -87,7 +87,7 @@ class CommentsController < ApplicationController
   private
   def send_notification_to(user_id, comment_data)
     @user = User.find(user_id)
-    ApplicationMailer.suggestion_notice(@user.email, comment_data.content, comment_data.name, comment_data.email).deliver
+    UserNotifierMailer.send_new_comment_notice(@user.email, comment_data.content, comment_data.name, comment_data.email).deliver
   end
 
   def comment_params
