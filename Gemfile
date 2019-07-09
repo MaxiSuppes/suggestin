@@ -77,3 +77,7 @@ gem 'googlecharts'
 
 # Email sender
 gem 'sendgrid-ruby'
+
+# Files managment
+gem 'paperclip'
+gem 'aws-sdk'
