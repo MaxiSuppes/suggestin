@@ -58,15 +58,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.active_storage.service = :local
-  # config.paperclip_defaults = {
-  #       storage: :s3,
-  #       s3_credentials: {
-  #           bucket: "fiuba-reviewit",
-  #           access_key_id: 'AKIAJQ5IWYRLRRTND3RQ',
-  #           secret_access_key: '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',
-  #           s3_region: 'sa-east-1',
-  #       }
-  #   }
 
   # Config mailer
   ActionMailer::Base.smtp_settings = {}
