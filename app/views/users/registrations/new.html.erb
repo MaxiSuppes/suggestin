@@ -15,7 +15,7 @@
 
   <div class="field input-user">
     <%= f.label :item, "Rubro" %><br />
-    <%= f.select :item, options_for_select(%w(Gastronomía Hotelería Kioscos Shoppings Moda Otro)) %>
+    <%= f.select :item, options_for_select([["Gastronomia", "Gastronomia"], ["Hoteleria", "Hoteleria"],  ["Kioscos", "Kioscos"],  ["Shoppings", "Shoppings"], ["Moda", "Moda"],  ["Otro", "Otro"]]) %>
   </div>
 
 
