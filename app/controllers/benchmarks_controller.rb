@@ -50,40 +50,45 @@ class BenchmarksController < ApplicationController
     current_user_index = ranked_users.index{|u| u[:user].id == current_user.id}
     ranked_users[current_user_index][:name] = current_user.name
 
-    result = []
-
-    case current_user_index
-    when 0
-      5.times do |i|
-        ranked_users[current_user_index + i] ? result << ranked_users[current_user_index + i].merge({index: current_user_index + i + 1}) : nil
-      end
-      return result
-    when 1
-      5.times do |i|
-        ranked_users[current_user_index - 1 + i] ? result << ranked_users[current_user_index - 1 + i].merge({index: current_user_index - 1 + i + 1}) : nil
-      end
-      return result
-    when ranked_users.size - 2
-      index = current_user_index - 3 + i
-      if index > -1
-        5.times do |i|
-          ranked_users[index] ? result << ranked_users[index].merge({index: index + 1}) : nil
-        end
-      end
-      return result
-    when ranked_users.size - 1
-      5.times do |i|
-        index = current_user_index - 4 + i
-        if index > -1
-          ranked_users[index] ? result << ranked_users[index].merge({index: index + 1}) : nil
-        end
-      end
-      return result
-    else
-      5.times do |i|
-        result << ranked_users[current_user_index - 2 + i].merge({index: current_user_index - 2 + i + 1})
-      end
-      return result
+    ranked_users.each.with_index do |user, index|
+      ranked_users[index] = ranked_users[index].merge({index:  index + 1})
     end
+    result = ranked_users
+
+    result
+
+    # case current_user_index
+    # when 0
+    #   5.times do |i|
+    #     ranked_users[current_user_index + i] ? result << ranked_users[current_user_index + i].merge({index: current_user_index + i + 1}) : nil
+    #   end
+    #   return result
+    # when 1
+    #   5.times do |i|
+    #     ranked_users[current_user_index - 1 + i] ? result << ranked_users[current_user_index - 1 + i].merge({index: current_user_index - 1 + i + 1}) : nil
+    #   end
+    #   return result
+    # when ranked_users.size - 2
+    #   index = current_user_index - 3 + i
+    #   if index > -1
+    #     5.times do |i|
+    #       ranked_users[index] ? result << ranked_users[index].merge({index: index + 1}) : nil
+    #     end
+    #   end
+    #   return result
+    # when ranked_users.size - 1
+    #   5.times do |i|
+    #     index = current_user_index - 4 + i
+    #     if index > -1
+    #       ranked_users[index] ? result << ranked_users[index].merge({index: index + 1}) : nil
+    #     end
+    #   end
+    #   return result
+    # else
+    #   5.times do |i|
+    #     result << ranked_users[current_user_index - 2 + i].merge({index: current_user_index - 2 + i + 1})
+    #   end
+    #   return result
+    # end
   end
 end
