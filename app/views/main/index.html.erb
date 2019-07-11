@@ -6,7 +6,7 @@
     <div class="option-menu"><%= link_to 'Ver reportes', {controller: 'reports', action: 'index'}, :class => 'main-btn btn' %></div>
     <div class="option-menu"><%= link_to 'Modificar categorías', {controller: 'categories', action: 'index'}, :class => 'main-btn btn' %></div>
   <% end %>
-  <% if @current_user.has_benchmark %>
+  <% if !@current_user.has_benchmark %>
     <div class="option-menu"><%= link_to 'Ver benchmarks', {controller: 'benchmarks', action: 'index'}, :class => 'main-btn btn' %></div>
   <% end %>
 
